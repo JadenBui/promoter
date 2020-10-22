@@ -1,10 +1,9 @@
 package qut;
 
+import edu.au.jacobi.pattern.IPattern;
 import edu.au.jacobi.pattern.Match;
 import edu.au.jacobi.pattern.Series;
 import edu.au.jacobi.sequence.Sequence;
-import edu.au.jacobi.sequence.list.FeatureList;
-import java.util.Comparator;
 
 public class BioPatterns 
 {

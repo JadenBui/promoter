@@ -1,11 +1,13 @@
 package qut;
 
+import com.google.gson.Gson;
 import qut.*;
 import jaligner.*;
 import jaligner.matrix.*;
 import edu.au.jacobi.pattern.*;
 import java.io.*;
 import java.util.*;
+import java.io.FileWriter;
 
 public class Sequential
 {
@@ -98,6 +100,7 @@ public class Sequential
     public static void run(String referenceFile, String dir) throws FileNotFoundException, IOException
     {
         List<Gene> referenceGenes = ParseReferenceGenes(referenceFile);
+        long start = System.currentTimeMillis();
         for (String filename : ListGenbankFiles(dir))
         {
             System.out.println(filename);
@@ -118,6 +121,8 @@ public class Sequential
                     }
             }
         }
+        long end = System.currentTimeMillis();
+        System.out.println(String.format("Run for: %s seconds", (end - start) / 1000));
 
         for (Map.Entry<String, Sigma70Consensus> entry : consensus.entrySet())
             System.out.println(entry.getKey() + " " + entry.getValue());
@@ -126,5 +131,13 @@ public class Sequential
     public static void main(String[] args) throws FileNotFoundException, IOException
     {
         run("C:\\Users\\sheep\\CAB401_Program\\promoter\\referenceGenes.list", "C:\\Users\\sheep\\CAB401_Program\\promoter\\Ecoli");
+        Gson gson = new Gson();
+        String resultInJson = gson.toJson(consensus);
+        try (FileWriter file = new FileWriter("consensus.json")) {
+            file.write(resultInJson);
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
