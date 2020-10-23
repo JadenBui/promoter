@@ -10,7 +10,6 @@ import java.util.concurrent.*;
 import java.util.stream.Collectors;
 import java.util.concurrent.locks.ReentrantLock;
 import qut.parallel.GeneComparisionTask;
-import qut.parallel.Prediction;
 
 
 public class Parallel {
