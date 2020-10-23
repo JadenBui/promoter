@@ -219,7 +219,7 @@ public class Parallel {
                 });
     }
 
-    public void run_parallel_homologous_executorServices(String referenceFile, String dir) throws FileNotFoundException, IOException {
+    public void run_parallel_homologous_executorService(String referenceFile, String dir) throws FileNotFoundException, IOException {
         List<Gene> referenceGenes = ParseReferenceGenes(referenceFile);
         ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         List<Future> comparisionResult = new ArrayList<>();
@@ -255,7 +255,7 @@ public class Parallel {
         }
     }
 
-    public void run_parallel_predictPromoter_executorServices(String referenceFile, String dir) throws FileNotFoundException, IOException {
+    public void run_parallel_predictPromoter_executorService(String referenceFile, String dir) throws FileNotFoundException, IOException {
         List<Gene> referenceGenes = ParseReferenceGenes(referenceFile);
         ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         List<Future> comparisionResult = new ArrayList<>();
@@ -287,7 +287,7 @@ public class Parallel {
         }
     }
 
-    public void run_parallel_addMatch_executorServices(String referenceFile, String dir) throws FileNotFoundException, IOException {
+    public void run_parallel_addMatch_executorService(String referenceFile, String dir) throws FileNotFoundException, IOException {
         List<Gene> referenceGenes = ParseReferenceGenes(referenceFile);
         ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         List<Future> results = new ArrayList<>();
@@ -443,9 +443,11 @@ public class Parallel {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
         long average = 0;
+        String referenceFile = "referenceGenes.list"; //Modify the string with your path to the file to run the program
+        String directory= "Ecoli"; //Modify the string with your path to the folder to run the program
         for (int i = 0; i < 10; i++) {
             long start = System.currentTimeMillis();
-            new Parallel().run_parallel_homologous_executorServices("C:\\Users\\sheep\\CAB401_Program\\promoter\\referenceGenes.list", "C:\\Users\\sheep\\CAB401_Program\\promoter\\Ecoli");
+            new Parallel().run_parallel_homologous_executorService(referenceFile, directory);
             long end = System.currentTimeMillis();
             System.out.println(String.format("Run for: %s seconds", (end - start) / 1000));
             average += (end - start) / 1000;

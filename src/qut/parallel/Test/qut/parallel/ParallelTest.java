@@ -7,7 +7,7 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParallelTest {
-
+    /*Test Parallel Stream API version*/
     @Test
     void parallelStreamAPI() {
         try {
@@ -18,7 +18,7 @@ class ParallelTest {
             e.printStackTrace();
         }
     }
-
+    /*Test Executors API version*/
     @Test
     void ExecutorsAPI() {
         try {

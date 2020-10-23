@@ -1,16 +1,10 @@
 package qut.parallel;
 
 import edu.au.jacobi.pattern.Match;
-import qut.GenbankRecord;
 import qut.Gene;
 import qut.NucleotideSequence;
 
-
-/**
- * A data container for the streaming work.
- *
- * @author Jordi Smit on 11-10-2018.
- */
+/*Container class for the Parallel Stream API implementation*/
 
 public class GeneComparisionTask {
     private final NucleotideSequence nucleotideSequence;

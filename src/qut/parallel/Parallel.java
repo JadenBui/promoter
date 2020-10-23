@@ -4,7 +4,6 @@ import qut.*;
 import jaligner.*;
 import jaligner.matrix.*;
 import edu.au.jacobi.pattern.*;
-import qut.parallel.EqualityTest;
 
 import java.io.*;
 import java.util.*;
@@ -105,7 +104,7 @@ public class Parallel
         return record;
     }
 
-    public void run_parallel_executorServices(String referenceFile, String dir) throws FileNotFoundException, IOException
+    public void run_parallel_executorService(String referenceFile, String dir) throws FileNotFoundException, IOException
     {
         List<Gene> referenceGenes = ParseReferenceGenes(referenceFile);
         ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
@@ -192,6 +191,8 @@ public class Parallel
 
     public static void main(String[] args) throws FileNotFoundException, IOException
     {
+        String referenceFile = "referenceGenes.list"; //Modify the string with your path to the file to run the program
+        String directory= "Ecoli"; //Modify the string with your path to the folder to run the program
         Scanner scanner = new Scanner(System.in);
         while(version == null){
             System.out.print("Please enter the parallel version: \n"+
@@ -203,7 +204,7 @@ public class Parallel
         }
         long start = System.currentTimeMillis();
         if(version.equals("Executors API")){
-            new Parallel().run_parallel_executorServices("C:\\Users\\sheep\\CAB401_Program\\promoter\\referenceGenes.list", "C:\\Users\\sheep\\CAB401_Program\\promoter\\Ecoli");
+            new Parallel().run_parallel_executorService("C:\\Users\\sheep\\CAB401_Program\\promoter\\referenceGenes.list", "C:\\Users\\sheep\\CAB401_Program\\promoter\\Ecoli");
         }else{
             new Parallel().run_parallel_parallelStream("C:\\Users\\sheep\\CAB401_Program\\promoter\\referenceGenes.list", "C:\\Users\\sheep\\CAB401_Program\\promoter\\Ecoli");
         }

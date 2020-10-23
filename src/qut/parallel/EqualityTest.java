@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.Map;
 
 public class EqualityTest {
+    /*Helper function for verifying the result to the user */
     public static void assertEquals(Map<String, Sigma70Consensus> consensus) {
         try {
             Gson gson = new Gson();
@@ -23,7 +24,7 @@ public class EqualityTest {
             ex.printStackTrace();
         }
     }
-
+    /*Helper function for verifying the reuslt for the test class */
     public static boolean assertEqualsBoolean(Map<String, Sigma70Consensus> consensus) {
         try {
             Gson gson = new Gson();
